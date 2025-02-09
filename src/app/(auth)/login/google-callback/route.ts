@@ -101,7 +101,7 @@ export async function GET(req: NextRequest) {
         path: "/",
       });
 
-      return redirect("/my-courses");
+      return redirect("/dashboard/my-courses");
     } catch (error) {
       console.log(error);
     }

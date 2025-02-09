@@ -9,11 +9,6 @@ import { redirect } from "next/navigation";
 
 export async function loginWithGoogleAction(formData:FormData) {
 
-    // didn't use this will remove after build
-    // const _formData = formData;
-    // console.log(_formData);
-    
-
     const state = generateState();
     const code = generateCodeVerifier();
     const cookiesSet = await cookies();
