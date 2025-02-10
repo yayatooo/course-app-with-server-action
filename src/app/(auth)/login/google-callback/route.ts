@@ -124,5 +124,5 @@ export async function GET(req: NextRequest) {
     path: "/",
   });
 
-  redirect("/my-courses");
+  redirect("/dashboard/my-courses");
 }

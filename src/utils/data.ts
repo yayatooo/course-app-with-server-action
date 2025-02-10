@@ -40,17 +40,17 @@ export const data = {
     platform: [
       {
         name: "My Courses",
-        url: "#",
+        url: "/dashboard/my-courses",
         icon: SwatchBook,
       },
       {
         name: "Certificate",
-        url: "#",
+        url: "/dashboard/certificate",
         icon: Star,
       },
       {
         name: "Orders",
-        url: "#",
+        url: "/dashboard/orders",
         icon: Video,
       },
     ],
@@ -58,27 +58,27 @@ export const data = {
     admin: [
       {
         name: "Analytics",
-        url: "#",
+        url: "/admin/analytics",
         icon: ChartColumnDecreasing,
       },
       {
         name: "Flash Sale",
-        url: "#",
+        url: "/admin/flash-sale",
         icon: BadgeDollarSign,
       },
       {
         name: "Courses",
-        url: "#",
+        url: "/admin/courses",
         icon: LibraryBig,
       },
       {
         name: "Certificate Approval",
-        url: "#",
+        url: "/admin/certificate-approval",
         icon: ShieldCheck,
       },
       {
         name: "Users",
-        url: "#",
+        url: "/admin/users",
         icon: Users,
       },
     ],
