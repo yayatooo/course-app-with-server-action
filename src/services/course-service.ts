@@ -37,4 +37,50 @@ export const courseService = {
       console.log(error);
     }
   },
+
+  getCourseDetail: async (slugOrId: string) => {
+    try {
+      const getDetailCourse = await prisma.course.findFirst({
+        where: {
+          OR: [
+            {
+              slug: slugOrId,
+            },
+            {
+              id: slugOrId,
+            },
+          ],
+        },
+        include: {
+          sections: {
+            include: {
+              lessons: true,
+            },
+          },
+        },
+      });
+
+      return getDetailCourse;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  addSection: async (courseId: string) => {
+
+    try {
+      const createSection = await prisma.section.create({
+        data: {
+          title: "New Section",
+          courseId
+        },
+      });
+
+      return createSection
+      
+    } catch (error) {
+      console.error("Error creating section:", error);
+      throw new Error("Failed to create section");
+    }
+  },
 };

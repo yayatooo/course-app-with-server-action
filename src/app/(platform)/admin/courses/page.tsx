@@ -55,7 +55,7 @@ export default async function Page() {
                 <div className="flex gap-3">
                   <Link
                     href={`/admin/courses/${course.slug}`}
-                    className="inline-block bg-[#92e3a9] text-gray-800 rounded-md px-3 py-1 text-sm hover:bg-[#7dcc95] transition-colors duration-200"
+                    className="inline-block bg-greenPrimary text-gray-800 rounded-md px-3 py-1 text-sm hover:bg-greenHover transition-colors duration-200"
                   >
                     Edit Content
                   </Link>
