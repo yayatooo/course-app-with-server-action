@@ -6,6 +6,7 @@ import { Send } from "lucide-react";
 import { redirect } from "next/navigation";
 import React from "react";
 import { AddSection } from "./comp-add-section";
+import { ComponentSectionCard } from "./comp-section-card";
 
 // if we acces params.slug with syncrous way we must use Promise and make await at variable
 interface Props {
@@ -47,24 +48,7 @@ export default async function page({ params }: Props) {
       </section>
       <section className="flex flex-col gap-2 py-6">
         {detailCourse.sections.map((section) => (
-          <Card
-            key={section.id}
-            
-            className="hover:shadow-lg transition-shadow duration-300 "
-          >
-            <CardHeader>
-              <div className="flex justify-between items-center">
-                <h1 className="text-lg">{section.title}</h1>
-                <div className="flex gap-2">
-                  <Button variant="secondary">Edit</Button>
-                  <Button variant="destructive">Delete</Button>
-                  <Button className="bg-greenPrimary hover:bg-greenHover text-black">
-                    Add Lesson
-                  </Button>
-                </div>
-              </div>
-            </CardHeader>
-          </Card>
+          <ComponentSectionCard key={section.id} section={section} />
         ))}
       </section>
     </main>
