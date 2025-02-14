@@ -11,15 +11,15 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Section } from "@prisma/client";
+import { Lesson } from "@prisma/client";
+import { editLessonAction } from "./action-edit-lesson";
 import { useState } from "react";
-import { editSectionAction } from "./action-edit-section";
 
-interface PropsSection {
-  section: Section;
+interface PropsLesson {
+  lesson: Lesson;
 }
 
-export function CompinentEditSection({ section }: PropsSection) {
+export function CompinentEditLesson({ lesson }: PropsLesson) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Loading state
 
@@ -28,7 +28,7 @@ export function CompinentEditSection({ section }: PropsSection) {
     setIsLoading(true); // Enable loading state
 
     const formData = new FormData(event.currentTarget);
-    await editSectionAction(formData);
+    await editLessonAction(formData);
 
     setIsLoading(false); // Disable loading state
     setIsOpen(false); // Close the dialog
@@ -37,34 +37,45 @@ export function CompinentEditSection({ section }: PropsSection) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary">Edit</Button>
+        <Button variant="secondary" size="sm">
+          Edit
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Edit Lesson</DialogTitle>
             <DialogDescription>
-              Make changes to Section here. Click save when you're done.
+              Make changes to lesson here. Click save when you're done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Input name="id" value={section.id} type="hidden" />
+              <Input name="id" value={lesson.id} type="hidden" />
               <Label htmlFor="title" className="text-right">
                 Title
               </Label>
               <Input
                 name="title"
-                defaultValue={section.title}
+                defaultValue={lesson.title}
+                className="col-span-3"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="videoUrl" className="text-right">
+                Video URL
+              </Label>
+              <Input
+                name="videoUrl"
+                defaultValue={lesson.videoUrl}
                 className="col-span-3"
                 required
               />
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">
-              {isLoading ? "Saving..." : "Save changes"}
-            </Button>
+            <Button type="submit">{isLoading ? "Saving..." : "Save changes"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

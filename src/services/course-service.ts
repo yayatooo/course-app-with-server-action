@@ -1,5 +1,5 @@
 import { prisma } from "@/utils/prisma";
-import { Course, Lesson } from "@prisma/client";
+import { Course, Lesson, Section } from "@prisma/client";
 import slugify from "slugify";
 
 export const courseService = {
@@ -56,9 +56,12 @@ export const courseService = {
             include: {
               lessons: {
                 orderBy: {
-                  index: "asc", // when i add this it will still sort order by index
+                  index: "asc",
                 },
               },
+            },
+            orderBy: {
+              index: "asc",
             },
           },
         },
@@ -72,10 +75,16 @@ export const courseService = {
 
   addSection: async (courseId: string) => {
     try {
+      const totalSection = await prisma.section.count({
+        where: {
+          courseId,
+        },
+      });
       const createSection = await prisma.section.create({
         data: {
-          title: "New Section",
+          title: `New Section + ${(totalSection + 1).toString()}`,
           courseId,
+          index: totalSection,
         },
       });
 
@@ -96,7 +105,7 @@ export const courseService = {
       const addLessonn = await prisma.lesson.create({
         data: {
           sectionId,
-          title: "New Lesson",
+          title: `New Lesson + ${(totalLesson + 1).toString()}`,
           slug: slugify(`New Lesson ${totalLesson.toString()}`, {
             lower: true,
           }),
@@ -138,6 +147,35 @@ export const courseService = {
           videoUrl: lesson.videoUrl,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  deleteSection: async (sectionId: string) => {
+    try {
+      await prisma.section.delete({
+        where: {
+          id: sectionId,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  editSection: async (section: Pick<Section, "id" | "title">) => {
+    try {
+      await prisma.section.update({
+        where: {
+          id: section.id,
+        },
+        data: {
+          title: section.title,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   },
 };

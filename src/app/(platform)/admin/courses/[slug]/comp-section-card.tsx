@@ -5,6 +5,8 @@ import { AddLessonBtn } from "./comp-add-lesson-btn";
 import { Lesson, Section } from "@prisma/client";
 import { GripVertical } from "lucide-react";
 import { ComponentLessonCard } from "./comp-lesson-card";
+import { deleteSectionAction } from "./action-delete.section";
+import { CompinentEditSection } from "./comp-edit-section";
 
 interface PropsSection {
   section: Section & { lessons: Lesson[] };
@@ -25,8 +27,16 @@ export const ComponentSectionCard = ({ section }: PropsSection) => {
             {section.title}
           </h1>
           <div className="flex gap-2">
-            <Button variant="secondary">Edit</Button>
-            <Button variant="destructive">Delete</Button>
+            <CompinentEditSection section={section} />
+            <form action={deleteSectionAction}>
+              <input type="hidden" name="sectionId" value={section.id} />
+              <Button
+                variant="destructive"
+                disabled={section.lessons.length > 0} // add condition if the section have a lesson the section can't delete
+              >
+                Delete
+              </Button>
+            </form>
             <AddLessonBtn sectionId={section.id} />
           </div>
         </div>

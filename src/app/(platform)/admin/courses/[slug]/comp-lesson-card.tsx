@@ -4,6 +4,7 @@ import { GripVertical } from "lucide-react";
 import React from "react";
 import { actionDeleteLesson } from "./action-delete-lesson";
 import { CompinentEditSection } from "./comp-edit-section";
+import { CompinentEditLesson } from "./comp-edit-lesson";
 
 interface PropsLesson {
   lesson: Lesson;
@@ -20,7 +21,7 @@ export const ComponentLessonCard = ({ lesson }: PropsLesson) => {
       </h1>
 
       <div className="flex gap-2">
-        <CompinentEditSection lesson={lesson} />
+        <CompinentEditLesson lesson={lesson} />
         <form action={actionDeleteLesson}>
           <input type="hidden" name="lessonId" value={lesson.id} />
           <Button size="sm" variant="destructive">
