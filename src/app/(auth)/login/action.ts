@@ -81,8 +81,11 @@ export async function loginAction(prevState:unknown, formData: FormData) {
     const cookiesSet = await cookies();
     cookiesSet.set("token", token, {
       httpOnly: true,
-      path: "/"
+      path: "/",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
     });
+    
 
     redirect("/dashboard/my-courses")
  
