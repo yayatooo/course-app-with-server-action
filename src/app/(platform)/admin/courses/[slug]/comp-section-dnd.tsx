@@ -26,12 +26,12 @@ export const ComponentSectionDnd = ({ course }: PropsCourse) => {
 
     // console.log(soureIndex, destinationIndex);
 
-    const newSctions = [...course.sections];
-    const [movedSection] = newSctions.splice(soureIndex, 1);
-    newSctions.splice(destinationIndex, 0, movedSection);
+    const newSections = [...course.sections];
+    const [movedSection] = newSections.splice(soureIndex, 1);
+    newSections.splice(destinationIndex, 0, movedSection);
 
     // update from client
-    const recorderedSections = newSctions.map((section, index) => ({
+    const recorderedSections = newSections.map((section, index) => ({
       ...section,
       index: index,
     }));
@@ -44,7 +44,7 @@ export const ComponentSectionDnd = ({ course }: PropsCourse) => {
     // console.log(recorderedSections);
     const formData = new FormData();
     formData.append("sourceIndex", soureIndex.toString());
-    formData.append("destinationIndex", destinationIndex.toLocaleString());
+    formData.append("destinationIndex", destinationIndex.toString());
     formData.append("courseId", course.id);
 
     await updateSectionIndexAction(formData);

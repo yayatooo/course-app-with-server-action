@@ -8,9 +8,10 @@ import { ComponentLessonCard } from "./comp-lesson-card";
 import { deleteSectionAction } from "./action-delete.section";
 import { CompinentEditSection } from "./comp-edit-section";
 import { Draggable } from "@hello-pangea/dnd";
+import { ComponentLessonDnd } from "./comp-lesson-dnd";
 
 interface PropsSection {
-  section: Section & { lessons: Lesson[] };
+  section: Section & { lessons: Lesson[] }; // if you want to get relation database in one to many 
   index: number
 }
 
@@ -48,7 +49,7 @@ export const ComponentSectionCard = ({ section, index }: PropsSection) => {
             </div>
           </CardHeader>
           <CardContent className="bg-slate-100 py-6">
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               {section.lessons.length === 0 ? (
                 <p className="text-gray-500 text-center">Add your lesson</p>
               ) : (
@@ -56,7 +57,8 @@ export const ComponentSectionCard = ({ section, index }: PropsSection) => {
                   <ComponentLessonCard key={lesson.id} lesson={lesson} />
                 ))
               )}
-            </div>
+            </div> */}
+            <ComponentLessonDnd section={section} />
           </CardContent>
         </Card>
         )
