@@ -13,7 +13,7 @@ export const UnBanUserComponents = ({ userId }: { userId: string }) => {
     <>
       <form action={formAction}>
         <input type="hidden" name="userId" value={userId} />
-        <Button variant="default" size="sm" disabled={pending}>
+        <Button className="bg-greenPrimary" size="sm" disabled={pending}>
           unBan
         </Button>
       </form>

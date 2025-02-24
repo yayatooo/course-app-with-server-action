@@ -49,15 +49,7 @@ export const ComponentSectionCard = ({ section, index }: PropsSection) => {
             </div>
           </CardHeader>
           <CardContent className="bg-slate-100 py-6">
-            {/* <div className="space-y-2">
-              {section.lessons.length === 0 ? (
-                <p className="text-gray-500 text-center">Add your lesson</p>
-              ) : (
-                section.lessons.map((lesson) => (
-                  <ComponentLessonCard key={lesson.id} lesson={lesson} />
-                ))
-              )}
-            </div> */}
+            
             <ComponentLessonDnd section={section} />
           </CardContent>
         </Card>
