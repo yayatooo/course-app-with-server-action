@@ -30,6 +30,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   role      Role @default(USER)
+  certificate Certificate[]
 }
 
 
@@ -42,6 +43,7 @@ model Course {
   coverImage String
   isPublished Boolean @default(false)
   sections Section[]
+  certificate Certificate[]
   flashSale FlashSale ?
 }
 
@@ -70,4 +72,19 @@ model FlashSale {
   newAmount Int
   courseId String @unique
   course Course @relation(fields: [courseId], references: [id])
+}
+
+enum RequestStatus {
+  UNDER_REVIEW
+  APPROVED
+  NO_REQUEST
+}
+model Certificate {
+  id String @id @default(cuid())
+  userId String @unique
+  courseId String @unique
+  status RequestStatus @default(NO_REQUEST)
+  user User @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
 }
