@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useActionState } from "react";
 import { Button } from "@/components/ui/button";
@@ -16,18 +16,36 @@ import { Course } from "@prisma/client";
 import { addFlashSaleAction } from "./action.add-flash-sale";
 
 interface PropsFlashSale {
-    courses: Course[];
+  courses: Course[];
 }
 
-export const FormFlashSale = ({courses} : PropsFlashSale) => {
+export interface FlashSaleState {
+  status: "success" | "error";
+  errors?: {
+    amount?: string[];
+    courseId?: string[];
+    server?: string[];
+  };
+  data?: {
+    amount?: number;
+    courseId?: string;
+  };
+}
 
+export const FormFlashSale = ({ courses }: PropsFlashSale) => {
+  const [state, formAction, pending] = useActionState(addFlashSaleAction, null);
 
-const [_, formAction, pending] = useActionState(addFlashSaleAction, null)
+  console.log(state);
 
   return (
     <form action={formAction} className="space-y-3">
       <h1>Input a discount</h1>
-      <Input type="number" placeholder="Input discount value" name="amount" />
+      <Input
+        type="number"
+        placeholder="Input discount value"
+        name="amount"
+        required
+      />
       <div className="flex justify-between ">
         <Select name="courseId">
           <SelectTrigger className="w-[180px]">
@@ -46,7 +64,9 @@ const [_, formAction, pending] = useActionState(addFlashSaleAction, null)
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button className="bg-greenPrimary text-black" disabled={pending}>submit</Button>
+        <Button className="bg-greenPrimary text-black" disabled={pending}>
+          submit
+        </Button>
       </div>
     </form>
   );
