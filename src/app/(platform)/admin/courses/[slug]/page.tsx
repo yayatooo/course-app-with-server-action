@@ -5,9 +5,9 @@ import { courseService } from "@/services/course-service";
 import { Send } from "lucide-react";
 import { redirect } from "next/navigation";
 import React from "react";
-import { AddSection } from "./comp-add-section";
-import { ComponentSectionCard } from "./comp-section-card";
-import { ComponentSectionDnd } from "./comp-section-dnd";
+import { AddSection } from "./comp.add-section";
+import { ComponentSectionCard } from "./comp.section-card";
+import { ComponentSectionDnd } from "./comp.section-dnd";
 
 // if we acces params.slug with syncrous way we must use Promise and make await at variable
 interface Props {

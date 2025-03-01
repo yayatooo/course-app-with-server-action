@@ -29,7 +29,9 @@ export const courseService = {
       const getAllCourse = await prisma.course.findMany({
         orderBy: {
           title: "asc",
-        },
+        }, include : {
+          flashSale: true
+        }
       });
 
       return getAllCourse;
@@ -64,6 +66,7 @@ export const courseService = {
               index: "asc",
             },
           },
+          flashSale : true
         },
       });
 

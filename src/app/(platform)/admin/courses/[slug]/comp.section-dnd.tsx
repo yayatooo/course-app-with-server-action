@@ -2,8 +2,8 @@
 
 import { courseService } from "@/services/course-service";
 import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
-import { ComponentSectionCard } from "./comp-section-card";
-import { updateSectionIndexAction } from "./action-update-section-index";
+import { ComponentSectionCard } from "./comp.section-card";
+import { updateSectionIndexAction } from "./action.update-section-index";
 import { startTransition, useOptimistic } from "react";
 
 interface PropsCourse {

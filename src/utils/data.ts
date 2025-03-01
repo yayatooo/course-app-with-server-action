@@ -16,13 +16,13 @@ import {
 
 export const data = {
     user: {
-      name: "shadcn",
+      name: "John Doe",
       email: "m@example.com",
       avatar: "/avatars/shadcn.jpg",
     },
     teams: [
       {
-        name: "Learning Projects",
+        name: "Makanya Belajar",
         logo: BrainCircuit,
         plan: "Enterprise",
       },
@@ -82,4 +82,24 @@ export const data = {
         icon: Users,
       },
     ],
+    
   }
+
+  export const Navmenu = [
+    {
+      name: "Home",
+      url: "/",
+    },
+    {
+      name: "Courses",
+      url: "/courses",
+    },
+    {
+      name: "Teams",
+      url: "/teams",
+    },
+    {
+      name: "Contact",
+      url: "/contact",
+    },
+  ];

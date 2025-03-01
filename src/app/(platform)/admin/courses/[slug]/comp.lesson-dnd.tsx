@@ -1,11 +1,11 @@
 "use client";
 
 import { courseService } from "@/services/course-service";
-import { ComponentLessonCard } from "./comp-lesson-card";
+import { ComponentLessonCard } from "./comp.lesson-card";
 import { Lesson, Section } from "@prisma/client";
 import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
 import { startTransition, useOptimistic } from "react";
-import { updateLessonDndAction } from "./action-update-lesson-dnd";
+import { updateLessonDndAction } from "./action.update-lesson-dnd";
 
 interface PropsLesson {
   section: Section & { lessons: Lesson[] };

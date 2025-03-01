@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import React from "react";
-import { AddLessonBtn } from "./comp-add-lesson-btn";
+import { AddLessonBtn } from "./comp.add-lesson-btn";
 import { Lesson, Section } from "@prisma/client";
 import { GripVertical } from "lucide-react";
-import { ComponentLessonCard } from "./comp-lesson-card";
-import { deleteSectionAction } from "./action-delete.section";
-import { CompinentEditSection } from "./comp-edit-section";
+import { ComponentLessonCard } from "./comp.lesson-card";
+import { deleteSectionAction } from "./action.delete.section";
+import { CompinentEditSection } from "./comp.edit-section";
 import { Draggable } from "@hello-pangea/dnd";
-import { ComponentLessonDnd } from "./comp-lesson-dnd";
+import { ComponentLessonDnd } from "./comp.lesson-dnd";
 
 interface PropsSection {
   section: Section & { lessons: Lesson[] }; // if you want to get relation database in one to many 

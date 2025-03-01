@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Lesson } from "@prisma/client";
 import { GripVertical } from "lucide-react";
 import React from "react";
-import { actionDeleteLesson } from "./action-delete-lesson";
-import { CompinentEditSection } from "./comp-edit-section";
-import { CompinentEditLesson } from "./comp-edit-lesson";
+import { actionDeleteLesson } from "./action.delete-lesson";
+import { CompinentEditSection } from "./comp.edit-section";
+import { CompinentEditLesson } from "./comp.edit-lesson";
 import { Draggable } from "@hello-pangea/dnd";
 interface PropsLesson {
   lesson: Lesson;

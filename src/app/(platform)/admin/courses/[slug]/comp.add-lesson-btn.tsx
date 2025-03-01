@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import { addLessonAction } from './action-add-lesson'
+import { addLessonAction } from './action.add-lesson'
 
 export const AddLessonBtn = ({sectionId} : {sectionId : string}) => {
   return (

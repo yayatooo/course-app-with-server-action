@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Lesson } from "@prisma/client";
-import { editLessonAction } from "./action-edit-lesson";
+import { editLessonAction } from "./action.edit-lesson";
 import { useState } from "react";
 
 interface PropsLesson {

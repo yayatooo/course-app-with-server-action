@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Section } from "@prisma/client";
 import { useState } from "react";
-import { editSectionAction } from "./action-edit-section";
+import { editSectionAction } from "./action.edit-section";
 
 interface PropsSection {
   section: Section;

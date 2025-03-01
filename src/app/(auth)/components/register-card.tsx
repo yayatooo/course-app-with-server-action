@@ -30,7 +30,7 @@ export function RegisterForm({
         <CardHeader>
           <CardTitle className="text-2xl">Register</CardTitle>
           <CardDescription>
-            Enter Your Name and Email to Register your Account
+            Enter Your Name and Email to Register your MB Account
           </CardDescription>
         </CardHeader>
         <CardContent>

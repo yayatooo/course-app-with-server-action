@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import React from "react";
-import { addSectionAction } from "./action-add-section";
+import { addSectionAction } from "./action.add-section";
 
 export const AddSection = ({courseId} : {courseId : string}) => {
   return (
