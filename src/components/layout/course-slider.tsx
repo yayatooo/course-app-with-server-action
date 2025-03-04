@@ -23,10 +23,15 @@ import { Badge } from "../ui/badge";
 export async function CarouselSlider() {
   const courses = await courseService.getAllCourse();
 
+  if (!courses) {
+    return null;
+    
+  }
+
   return (
     <Carousel className="w-full max-w-lg">
       <CarouselContent>
-        {courses?.map((course) => (
+        {courses.map((course) => (
           <CarouselItem key={course.id}>
             <Card className="overflow-hidden h-full transition-all duration-300 hover:shadow-xl">
               {/* Course Cover Image */}
