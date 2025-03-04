@@ -6,12 +6,14 @@ import { Lock } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { currencyFormat } from "@/lib/currency-format";
+import { paymentCourse } from "./action.payment-course";
 
 interface Props {
   course: Awaited<ReturnType<typeof courseService.getCourseDetail>>;
+  // course : Course | null
 }
 
-export async function CourseDetails({ course }: Props) {
+export function CourseDetails({ course }: Props) {
   if (!course) {
     notFound();
   }
@@ -30,15 +32,16 @@ export async function CourseDetails({ course }: Props) {
         <div className="space-y-2">
           <h1 className="text-2xl font-bold text-start">{course.title}</h1>
           <h3>{course.description}</h3>
-          {course.flashSale?.id ? (
+          <form action={paymentCourse}>
+            <input type="hidden" value={course.id} name="courseId" />
+            <input type="hidden" value={course.flashSale ? course.flashSale.newAmount : course.price} name="amount" />
             <Button className="bg-greenPrimary text-blackText hover:bg-greenHover">
-              Buy {currencyFormat(course.flashSale.newAmount)}
+              Buy{" "}
+              {currencyFormat(
+                course.flashSale ? course.flashSale.newAmount : course.price
+              )}
             </Button>
-          ) : (
-            <Button className="bg-greenPrimary text-blackText hover:bg-greenHover">
-              Buy {currencyFormat(course.price)}
-            </Button>
-          )}
+          </form>
         </div>
       </div>
 
