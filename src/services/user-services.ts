@@ -30,13 +30,14 @@ export const userServices = {
   },
 
   // make login user service
-  findUser: async (email: string) => {
-    const findUser = await prisma.user.findUnique({
+  findUser: async (emailOrId: string) => {
+    return await prisma.user.findFirst({
       where: {
-        email: email,
-      },
+        OR: [
+          { email: emailOrId },
+          { id: emailOrId }
+        ]
+      }
     });
-
-    return findUser;
   },
 };
