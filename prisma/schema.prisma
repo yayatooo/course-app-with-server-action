@@ -32,6 +32,7 @@ model User {
   role      Role @default(USER)
   certificate Certificate[]
   transaction Transaction[]
+  courseAccess CourseAccess[]
 }
 
 
@@ -47,6 +48,7 @@ model Course {
   certificate Certificate[]
   flashSale FlashSale ?
   trasanction Transaction[]
+  courseAccess CourseAccess[]
 }
 
 model Section {
@@ -107,6 +109,16 @@ model Transaction {
   user User @relation(fields: [userId], references: [id])
   course Course @relation(fields: [courseId], references: [id])
   transactionId String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CourseAccess {
+  id String @id @default(cuid())
+  userId String
+  courseId String
+  user User @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
